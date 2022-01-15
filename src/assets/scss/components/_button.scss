@@ -1,0 +1,21 @@
+.btn
+{
+  display: inline-block;
+  padding: rem(17) rem(46);
+  background-color: $primary-color;
+  color: black;
+  border-radius: rem(5);
+  box-sizing: border-box;
+  cursor: pointer;
+
+}
+.btn:hover, focus{
+  background-color: #FFE302;
+}
+.btn-registration
+{
+  border: 2px solid $primary-color;
+  background-color: transparent;
+  color: $primary-color;
+
+}

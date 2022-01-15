@@ -1,0 +1,43 @@
+// px to rem
+@function 	rem($pixels, $context: $mainFontSize) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+	@return $pixels / $context * 1rem;
+}
+
+@mixin flex($horizontal: center, $vertical: center) {
+	display: flex;
+	justify-content: $horizontal;
+	align-items: $vertical;
+}
+
+@mixin wrapperPadding{
+	padding: 0 rem(60);
+	max-width: $maxContainerWidth;
+	margin: 0 auto;
+}
+
+@mixin button($btn-background) {
+	background-color:$btn-background;
+}
+
+// placeholder helper
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+
