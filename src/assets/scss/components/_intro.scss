@@ -1,18 +1,82 @@
 .intro-wrapper {
-
-  height: rem(1131);
-  height: 100vh;
-  text-align: center;
-  vertical-align: middle;
-
+  overflow: hidden;
 }
 
-.intro-bg-img{
+.intro-bg-img {
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  @include flex(center, center);
+
+}
+
+.intro-header {
+  margin: rem(40) 0;
+  text-align: center;
 }
 
 .intro-highlight {
   color: $primary-color;
+}
+
+.main-typography {
+  @include flex(center);
+  flex-direction: column;
+  height: 100%;
+
+}
+
+.main-logo {
+  cursor: pointer;
+}
+
+.intro-svg-container {
+  position: relative;
+}
+
+.section-one-bg {
+  width: rem(220);
+  height: rem(174);
+  position: absolute;
+  top: rem(-60);
+  right: rem(199);
+}
+
+.section-two-bg {
+  width: rem(220);
+  height: rem(174);
+  position: absolute;
+  top: rem(222);
+  left: rem(-45);
+
+}
+
+.section-three-bg {
+  width: rem(186);
+  height: rem(186);
+  position: absolute;
+  right: rem(-30);
+  top: rem(613);
+
+}
+
+@media screen and (max-width: 580px) {
+  .section-one-bg {
+    top: rem(8);
+    left: rem(-22);
+    width: rem(86);
+    height: rem(122)
+  }
+  .section-two-bg {
+    height: rem(78);
+    width: rem(99);;
+    right: rem(-29);
+    left: initial;
+  }
+  .section-three-bg {
+    height: rem(93);
+    width: rem(93);;
+    left: rem(-25);
+    right: initial;
+  }
 }

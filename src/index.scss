@@ -1,7 +1,8 @@
 @import './assets/scss/utils';
 @import './assets/scss/components';
-
-
+//@import "bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap.scss';
 body {
   font-family: 'Rubik', sans-serif;
   color: #FFFFFF;

@@ -1,0 +1,38 @@
+select {
+  cursor: pointer;
+  display: inline-block;
+}
+
+//select {
+//  -moz-appearance: none;
+//  -webkit-appearance: none;
+//  appearance: none;
+//}
+//select::-ms-expand {  /* для IE */
+//  display: none;
+//  background-image: url("./src/assets/icons/arrow.png");
+//  background-repeat: no-repeat;
+//}
+
+.select-icons {
+  width: 100%;
+  position: relative;
+}
+
+.select-icons img {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+}
+
+.label {
+  transition: 0.3s all ease;
+  position: absolute;
+  cursor: initial;
+  left: 56px;
+  top: 18px;
+  color: #E0E0E0;
+  line-height: 23px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+}

@@ -8,11 +8,14 @@
   box-sizing: border-box;
   cursor: pointer;
 
+
 }
 .btn:hover, focus{
   background-color: #FFE302;
+  outline: none;
+  border: none;
 }
-.btn-registration
+.btn.btn-registration
 {
   border: 2px solid $primary-color;
   background-color: transparent;

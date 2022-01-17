@@ -1,0 +1,46 @@
+
+
+
+.form-title{
+  font-size: rem(24);
+  line-height: rem(28.44);
+  margin: 0;
+}
+
+.my-col
+{
+  padding: 0;
+border: 1px solid lawngreen;
+}
+
+
+
+.intro-form-img {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.introform-svg-container{
+  position: relative;
+}
+.form-one-bg {
+  width: rem(107);
+  height: rem(107);
+  position: absolute;
+  top: 350px;
+  left: -30px;
+}
+.form-two-bg{
+  width: rem(138);
+  height: rem(138);
+  position: absolute;
+  top: 300px;
+  right: -40px;
+}
+.form-three-bg{
+  width: rem(147);
+  height: rem(147);
+  position: absolute;
+  top: 733px;
+  left: 600px;
+}
