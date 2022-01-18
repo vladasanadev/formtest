@@ -54,7 +54,7 @@
 
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (min-width: 360px) and (max-width: 576px) {
   .section-one-bg {
     top: rem(8);
     left: rem(-22);

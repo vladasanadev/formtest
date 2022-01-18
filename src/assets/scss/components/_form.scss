@@ -214,7 +214,7 @@ p{
   }
   }
 
-@media screen and (max-width: 480px){
+@media screen and (min-width: 360px) and (max-width: 576px) {
   .form-title{
     margin-top: rem(110);
   }
