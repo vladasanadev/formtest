@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import bg from '../../assets/img-bgs/bg-2.jpg'
 import img from "../../assets/img-bgs/bg-1.jpg";
 import bg1 from "../../assets/bg-forms/section_2-svg_1.svg";
@@ -23,7 +23,7 @@ const Form = ({data}) => {
     const [country, setCountry] = useState(data.countries[0].name);
     const [phoneNum, setPhoneNum] = useState('');
 
-
+//errors
     const [hasError, setHasError] = useState(false);
     const [secNameHasError, setSecNameHasError] = useState(false);
     const [selectedValueHasError, setSelectedValueHasError] = useState(false);
@@ -34,46 +34,124 @@ const Form = ({data}) => {
     const [emailHasError, setEmailHasError] = useState(false);
     const [checkBoxHasError, setCheckBoxHasError] = useState(false);
 
+    const [activeCheckboxClass, setActiveCheckboxClass] = useState('');
+    const [checkboxClassError, setCheckboxClassError] = useState('');
 
-    const [checked, setChecked] = useState(false);
+//values states
+
     const [nameInputValue, setNameInputValue] = useState('');
     const [secNameInputValue, setSecNameInputValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('');
+    const [checked, setChecked] = useState(false);
     const [pswValue, setPswValue] = useState('');
     const [confPswValue, setConfPswValue] = useState('');
     const [emailValue, setEmailValue] = useState('');
 
+    //validation Callback
+
+    const nameValidation = () => {
+        console.log(hasError, nameInputValue, nameInputValue.length > 2 || nameInputValue.length === 0)
+        if (nameInputValue.length > 2) {
+            setHasError(false);
+        } else {
+            setHasError(true);
+        }
+    }
+    const selectValidation = () => {
+        selectedValue ? setSelectedValueHasError(false) : setSelectedValueHasError(true)
+    }
+    const phoneValidation = () => {
+        if (phoneNum.length !== 0) {
+            setPhHasError(false);
+        } else {
+            setPhHasError(true);
+        }
+    }
+    const pswValidation = () => {
+        if (!validPassword.test(pswValue)) {
+            setPswHasError(true)
+        } else {
+            setPswHasError(false);
+        }
+    }
+
+    const confFswValidation = () => {
+
+        if (confPswValue === pswValue) {
+            setConfPswHasError(false)
+        } else {
+            setConfPswHasError(true);
+        }
+    }
+    const emailValidation = () => {
+        // if (!validEmail.test(emailValue)) {
+        //     setEmailHasError(true)
+        // }
+         if (emailValue.includes("@") && emailValue.includes(".") ) setEmailHasError(false);
+        else {
+            setEmailHasError(true);
+        }
+    }
+    const checkBoxValidation = () => {
+
+        if (checked) {
+            setCheckBoxHasError(false)
+        } else {
+            setCheckboxClassError('checkbox-error')
+            setTimeout(()=>{
+                setCheckboxClassError("")
+            }, 3000)
+            setCheckBoxHasError(true)
+        }
+    }
+
+    const formValidationHandler = () => {
+        console.log("validdd")
+        nameValidation();
+        selectValidation();
+        phoneValidation();
+        emailValidation();
+        pswValidation();
+        confFswValidation();
+        checkBoxValidation();
+
+    }
+
+
+    useEffect(() => {
+        if (nameInputValue || secNameInputValue || pswValue || confPswValue || emailValue) {
+            setActiveCheckboxClass('active-checkbox')
+        } else setActiveCheckboxClass("")
+    }, [nameInputValue, secNameInputValue, pswValue, confPswValue, emailValue])
 
     return (
-        <div className={"intro-wrapper"}>
-            <div className={'introform-svg-container'}>
-                <img src={bg1} className={'form-one-bg'}/>
-                <img src={bg2} className={'form-two-bg'}/>
-                <img src={bg3} className={'form-three-bg'}/>
-            </div>
+        <div className={"intro-wrapper"} id={'Registration'}>
+
             <div style={{backgroundImage: `url(${bg})`}} className={'intro-form-img '}>
+                {/*<div className={'introform-svg-container'}>*/}
+                    <img src={bg1} className={'form-one-bg'}/>
+                    <img src={bg2} className={'form-two-bg'}/>
+                    <img src={bg3} className={'form-three-bg'}/>
+                {/*</div>*/}
                 <Container>
-                    <Row xs={12} lg={6} style={{border: "1px solid red"}} className={'justify-content-center'}>
-                        <Col xs={12} lg={6} style={{border: "1px solid brown"}}
-                             className={"my-col"}
-                        >
+                    <Row xs={12} lg={6} className={'justify-content-center'}>
+                        <Col xs={12} lg={6}
+                             className={"my-col"}>
                             <p className={'form-title'}><span className={'intro-highlight'}>Sign Up</span> and find the
                                 best place to rest while traveling</p>
                         </Col>
                     </Row>
                     <Row className={'justify-content-center'}>
                         <Col xs={12} lg={3}
-                             className={"my-col p-3"}
+                             className={"my-col p-2"}
                         >
                             <Input
                                 error={"The name must be more than 2 characters"}
                                 hasError={hasError}
                                 onChange={(e) => {
                                     setNameInputValue(e.target.value)
-                                    if (e.target.value.length > 2 || e.target.value.length === 0) {
-                                        setHasError(false);
-                                    } else {
-                                        setHasError(true);
+                                    if (hasError && e.target.value.length>2) {
+                                        setHasError(false)
                                     }
                                 }
                                 }
@@ -83,17 +161,18 @@ const Form = ({data}) => {
                                 placeholder='First Name' onClick={(e) => {
                             }} svg={nameSvg} type={'text'}/>
                         </Col>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Input
                                 error={"Second name must be more than 2 characters"}
                                 hasError={secNameHasError}
                                 onChange={(e) => {
                                     setSecNameInputValue(e.target.value)
-                                    if (e.target.value.length > 2 || e.target.value.length === 0) {
-                                        setSecNameHasError(false);
-                                    } else {
-                                        setSecNameHasError(true);
-                                    }
+
+                                    // if (e.target.value.length > 2 && secNameHasError) {
+                                    //     setSecNameHasError(false);
+                                    // } else {
+                                    //     setSecNameHasError(true);
+                                    // }
                                 }
                                 }
                                 value={secNameInputValue}
@@ -104,28 +183,30 @@ const Form = ({data}) => {
                         </Col>
                     </Row>
                     <Row className={'justify-content-center'}>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Select
                                 onChange={(e) => {
+                                    console.log("here");
                                     setSelectedValue(e.target.value)
-                                    selectedValue ? setSelectedValueHasError(false) : setSelectedValueHasError(true)
+                                    setCountry(e.target.value)
+                                    setPhoneNum(data?.countries.find(el => el.name === country).code + " ")
+
+                                    if (selectedValueHasError && e.target.value){
+                                        setSelectedValueHasError(false);
+                                        console.log(selectedValueHasError, e.target.value)
+
+                                    }
                                 }}
                                 error={"Fill in the field"}
                                 hasError={selectedValueHasError}
                                 svg={countrySvg}
-                                data={data?.countries}
-                                onChange={(e) => {
-                                    setCountry(e.target.value)
-                                    setPhoneNum(data?.countries.find(el => el.name === country).code + " ")
-
-                                }}/>
-
+                                data={data?.countries}/>
                         </Col>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Input
                                 // required={required}
                                 value={phoneNum}
-                                hasError={hasError}
+                                hasError={phHasError}
                                 onChange={(e) => {
                                     setPhoneNum(e.target.value)
                                     if (e.target.value.length !== 0) {
@@ -147,7 +228,7 @@ const Form = ({data}) => {
                         </Col>
                     </Row>
                     <Row className={'justify-content-center'}>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Input
                                 hasError={pswHasError}
                                 onChange={(e) => {
@@ -158,7 +239,7 @@ const Form = ({data}) => {
                                         setPswHasError(false);
                                     }
 
-                              console.log(validPassword.test(e.target.value.toString()), e.target.value)
+                                    console.log(validPassword.test(e.target.value.toString()), e.target.value)
                                 }
                                 }
                                 value={pswValue}
@@ -169,7 +250,7 @@ const Form = ({data}) => {
                                 svg={paswdSvg} type={'password'}/>
 
                         </Col>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
 
                             <Input
                                 hasError={confPswHasError}
@@ -180,7 +261,7 @@ const Form = ({data}) => {
                                     } else {
                                         setConfPswHasError(true);
                                     }
-                                    console.log(e.target.value, pswValue,e.target.value === pswValue )
+                                    console.log(e.target.value, pswValue, e.target.value === pswValue)
                                 }
                                 }
                                 value={confPswValue}
@@ -192,7 +273,7 @@ const Form = ({data}) => {
                         </Col>
                     </Row>
                     <Row className={'justify-content-center'}>
-                        <Col xs={12} lg={3} className={"my-col p-3"}>
+                        <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Input
                                 hasError={emailHasError}
                                 onChange={(e) => {
@@ -217,17 +298,17 @@ const Form = ({data}) => {
                                         setChecked(prev => !prev)
                                     }}
                                     checked={checked}
-                                    // style={{backgroundImage: `url(${stroke})`}}
-                                    type={"checkbox"} className="form-checkbox"/>
-
+                                    type={"checkbox"} className={` form-checkbox ${activeCheckboxClass} ${checkboxClassError}`}/>
                                 <p className={"form-paragraph"}><span className={'form-span'}> I agree to the</span>
                                     <span className={'form-highlight'}> Terms & Conditions</span></p>
                             </label>
                         </Col>
                     </Row>
                     <Row className={'justify-content-center'}>
-                        <Col xs={12} lg={6} className={"my-col p-3"}>
-                            <Button style={"form-btn"} text={"Sign Up"}/>
+                        <Col xs={12} lg={6} className={"my-col p-2"}>
+                            <Button
+                                onClick={formValidationHandler}
+                                style={"form-btn"} text={"Sign Up"}/>
 
                         </Col>
                     </Row>

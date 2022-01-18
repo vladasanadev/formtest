@@ -3,19 +3,22 @@
   font-size: rem(24);
   line-height: rem(28.44);
   margin: 0 0 rem(55) 0;
+  text-align: center;
 
 }
 
 .my-col {
   padding: 0;
-  border: 1px solid lawngreen;
 
 }
 
 
 .intro-form-img {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   @include flex(center, center);
-  height: 100vh;
+  min-height: 100vh;
 
   position: relative;
 }
@@ -31,6 +34,7 @@
   position: absolute;
   top: 350px;
   left: -30px;
+  z-index: 1;
 }
 
 .form-two-bg {
@@ -39,18 +43,21 @@
   position: absolute;
   top: 300px;
   right: -40px;
+  z-index: 1;
+
 }
 
 .form-three-bg {
   width: rem(147);
   height: rem(147);
   position: absolute;
-  top: 733px;
-  left: 600px;
+  right: 200px;
+bottom: 0;
+
+  z-index: 1;
 }
 
 .form-checkbox-wrap {
-  //padding: rem(16) 0;
   width: 100%;
 
 
@@ -132,6 +139,15 @@ input[type="checkbox"]:checked {
  background-color: $primary-color;
     transform: scale(1);
 }
+input[type="checkbox"].active-checkbox{
+  background-color: $primary-color;
+}
+
+input[type="checkbox"].checkbox-error{
+  background-color: red;
+  border: 1px solid red;
+}
+
 .label {
   transition: 0.3s all ease;
   position: absolute;
@@ -146,6 +162,7 @@ input[type="checkbox"]:checked {
 }
 
 .footer-text {
+margin-bottom: rem(25);
   font-weight: 300;
   font-size: rem(15);
   line-height: rem(18);
@@ -153,6 +170,7 @@ input[type="checkbox"]:checked {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
+  z-index: 1;
 }
 
 .footer-text a {
@@ -160,7 +178,8 @@ input[type="checkbox"]:checked {
   color: $primary-color;
 }
 .footer-text a:focus,hover{
-  color: white;
+  text-decoration: none;
+  color: $primary-color;
 }
 
 .form-error{
@@ -170,8 +189,11 @@ input[type="checkbox"]:checked {
   line-height: 12px;
   text-align: right;
   color: #DA5050;
+  margin: 0;
 }
-
+p{
+  margin: 0;
+}
 
 @media screen and (min-width: 990px) and (max-width: 1200px) {
   .form-paragraph {

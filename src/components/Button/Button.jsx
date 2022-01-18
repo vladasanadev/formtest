@@ -2,9 +2,11 @@ import React from 'react';
 
 
 
-export const Button = ({ text, style  }) => {
+export const Button = ({ text, style,...rest  }) => {
     return (
-        <button className={`${style}`}>
+        <button className={`${style}`}
+                {...rest}
+        >
             {text}
         </button>
     );

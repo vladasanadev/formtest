@@ -19,14 +19,18 @@ const Intro = () => {
             <div style={{backgroundImage: `url(${img})`}} className={'intro-bg-img'}>
                 <Container>
                     <Row className={'justify-content-center'}
-                         style={{border: "1px solid blue"}}>
-                        <Col xs={12} lg={6} style={{border: "1px solid red", maxWidth: '649px', width: "100%"}}>
+                         >
+                        <Col xs={12} lg={6} style={{maxWidth: '649px', width: "100%"}}>
                             <div className={"main-typography"}>
                                 <LogoIcon classname={"main-logo"}/>
                                 <h1 className={"intro-header"}>Find the <span
                                     className={'intro-highlight'}>best place</span><br/>
                                     <span className={'intro-highlight'}>to rest</span> while traveling</h1>
-                                <Button text={'Registration'} style={'btn-registration'}/>
+                                <Button
+                                    onClick = {()=> {
+                                        window.location.href = '#Registration'
+                                    }}
+                                    text={'Registration'} style={'btn-registration'}/>
                             </div>
                         </Col>
                     </Row>
