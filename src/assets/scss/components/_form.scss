@@ -1,4 +1,7 @@
-
+.intro-wrapper{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 .form-title {
   font-size: rem(24);
   line-height: rem(28.44);
@@ -26,6 +29,8 @@
 .introform-svg-container {
   position: relative;
 }
+
+
 
 .form-one-bg {
 
@@ -83,14 +88,14 @@ bottom: 0;
   border-bottom: 1px solid $primary-color;
   margin-bottom: rem(-2);
   white-space: nowrap;
-  overflow: hidden;
+
 }
 
 .form-highlight ::before {
   content: " ";
   display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
+
 
 }
 
@@ -144,8 +149,8 @@ input[type="checkbox"].active-checkbox{
 }
 
 input[type="checkbox"].checkbox-error{
-  background-color: red;
-  border: 1px solid red;
+  background-color: #DA5050;
+  border: 1px solid #DA5050;
 }
 
 .label {
@@ -166,20 +171,22 @@ margin-bottom: rem(25);
   font-weight: 300;
   font-size: rem(15);
   line-height: rem(18);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+text-align: center;
   z-index: 1;
+
 }
 
 .footer-text a {
   text-decoration: none;
   color: $primary-color;
+  scale:0.5;
+  transition: 0.3s all ease;
 }
-.footer-text a:focus,hover{
+.footer-text a:hover, a:focus{
   text-decoration: none;
-  color: $primary-color;
+  color: white;
+  transition: 0.8s all ease;
+
 }
 
 .form-error{
@@ -196,7 +203,35 @@ p{
 }
 
 @media screen and (min-width: 990px) and (max-width: 1200px) {
+
+
   .form-paragraph {
     font-size: rem(12);
   }
+  }
+
+@media screen and (max-width: 480px){
+  .form-title{
+    margin-top: rem(110);
+  }
+  .form-one-bg {
+    width: rem(114);
+    height: rem(91);
+    top: rem(150);
+  }
+  .form-two-bg {
+    height: rem(78);
+    width: rem(99);;
+    top:rem(10);
+  }
+  .form-three-bg {
+    height: rem(93);
+    width: rem(93);
+    right: rem(-19);
+    bottom: rem(-16);
+
+  }
+
+
+
 }

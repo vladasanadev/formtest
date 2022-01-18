@@ -6,7 +6,18 @@
 body {
   font-family: 'Rubik', sans-serif;
   color: #FFFFFF;
+
 }
+
+[data-scroll] {
+  transition: opacity 1s ease-in-out;
+}
+[data-scroll="in"] {
+  opacity: 1;
+}
+//[data-scroll="out"] {
+//  opacity: 0;
+//}
 
 img {
   width: 100%;

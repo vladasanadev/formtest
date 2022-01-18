@@ -4,10 +4,12 @@ const Select = ({data,svg,hasError,error,defaultValue, ...rest}) => {
     const [title, setTitle] = useState()
 
     return (
-        <div className={'select-icons'}>
+        <div
+            data-scroll
+            className={'select-icons'}>
             <img src={svg} className="icon"/>
             <select
-                required
+
                 className={'input input-field'}
                   {...rest}>
                 <option value={""} selected hidden>Countries</option>

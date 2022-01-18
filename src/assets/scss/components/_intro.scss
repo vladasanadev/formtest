@@ -1,5 +1,6 @@
 .intro-wrapper {
   overflow: hidden;
+  position: relative;
 }
 
 .intro-bg-img {
@@ -8,7 +9,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   @include flex(center, center);
-
 }
 
 .intro-header {
@@ -26,14 +26,6 @@
   flex-direction: column;
   height: 100%;
 
-}
-
-.main-logo {
-  cursor: pointer;
-}
-
-.intro-svg-container {
-  position: relative;
 }
 
 .section-one-bg {

@@ -20,10 +20,13 @@ import {validEmail, validPassword} from "../../utils/Regex";
 
 
 const Form = ({data}) => {
+
+    //Hooks to choose and store country,phoneNumber data
     const [country, setCountry] = useState(data.countries[0].name);
     const [phoneNum, setPhoneNum] = useState('');
 
-//errors
+
+    //errors
     const [hasError, setHasError] = useState(false);
     const [secNameHasError, setSecNameHasError] = useState(false);
     const [selectedValueHasError, setSelectedValueHasError] = useState(false);
@@ -37,8 +40,7 @@ const Form = ({data}) => {
     const [activeCheckboxClass, setActiveCheckboxClass] = useState('');
     const [checkboxClassError, setCheckboxClassError] = useState('');
 
-//values states
-
+    //values states
     const [nameInputValue, setNameInputValue] = useState('');
     const [secNameInputValue, setSecNameInputValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('');
@@ -48,7 +50,6 @@ const Form = ({data}) => {
     const [emailValue, setEmailValue] = useState('');
 
     //validation Callback
-
     const nameValidation = () => {
         console.log(hasError, nameInputValue, nameInputValue.length > 2 || nameInputValue.length === 0)
         if (nameInputValue.length > 2) {
@@ -87,7 +88,7 @@ const Form = ({data}) => {
         // if (!validEmail.test(emailValue)) {
         //     setEmailHasError(true)
         // }
-         if (emailValue.includes("@") && emailValue.includes(".") ) setEmailHasError(false);
+        if (emailValue.includes("@") && emailValue.includes(".")) setEmailHasError(false);
         else {
             setEmailHasError(true);
         }
@@ -98,7 +99,7 @@ const Form = ({data}) => {
             setCheckBoxHasError(false)
         } else {
             setCheckboxClassError('checkbox-error')
-            setTimeout(()=>{
+            setTimeout(() => {
                 setCheckboxClassError("")
             }, 3000)
             setCheckBoxHasError(true)
@@ -106,7 +107,6 @@ const Form = ({data}) => {
     }
 
     const formValidationHandler = () => {
-        console.log("validdd")
         nameValidation();
         selectValidation();
         phoneValidation();
@@ -128,11 +128,9 @@ const Form = ({data}) => {
         <div className={"intro-wrapper"} id={'Registration'}>
 
             <div style={{backgroundImage: `url(${bg})`}} className={'intro-form-img '}>
-                {/*<div className={'introform-svg-container'}>*/}
-                    <img src={bg1} className={'form-one-bg'}/>
-                    <img src={bg2} className={'form-two-bg'}/>
-                    <img src={bg3} className={'form-three-bg'}/>
-                {/*</div>*/}
+                <img src={bg1} className={'form-one-bg'}/>
+                <img src={bg2} className={'form-two-bg'}/>
+                <img src={bg3} className={'form-three-bg'}/>
                 <Container>
                     <Row xs={12} lg={6} className={'justify-content-center'}>
                         <Col xs={12} lg={6}
@@ -150,7 +148,7 @@ const Form = ({data}) => {
                                 hasError={hasError}
                                 onChange={(e) => {
                                     setNameInputValue(e.target.value)
-                                    if (hasError && e.target.value.length>2) {
+                                    if (hasError && e.target.value.length > 2) {
                                         setHasError(false)
                                     }
                                 }
@@ -167,12 +165,6 @@ const Form = ({data}) => {
                                 hasError={secNameHasError}
                                 onChange={(e) => {
                                     setSecNameInputValue(e.target.value)
-
-                                    // if (e.target.value.length > 2 && secNameHasError) {
-                                    //     setSecNameHasError(false);
-                                    // } else {
-                                    //     setSecNameHasError(true);
-                                    // }
                                 }
                                 }
                                 value={secNameInputValue}
@@ -191,7 +183,7 @@ const Form = ({data}) => {
                                     setCountry(e.target.value)
                                     setPhoneNum(data?.countries.find(el => el.name === country).code + " ")
 
-                                    if (selectedValueHasError && e.target.value){
+                                    if (selectedValueHasError && e.target.value) {
                                         setSelectedValueHasError(false);
                                         console.log(selectedValueHasError, e.target.value)
 
@@ -216,7 +208,6 @@ const Form = ({data}) => {
                                     }
                                 }
                                 }
-
                                 labelClass={phoneNum ? "inputNotEmpty label" : "label"}
                                 error={"Fill in the field"}
                                 labelFor={'forPhone'}
@@ -298,7 +289,8 @@ const Form = ({data}) => {
                                         setChecked(prev => !prev)
                                     }}
                                     checked={checked}
-                                    type={"checkbox"} className={` form-checkbox ${activeCheckboxClass} ${checkboxClassError}`}/>
+                                    type={"checkbox"}
+                                    className={` form-checkbox ${activeCheckboxClass} ${checkboxClassError}`}/>
                                 <p className={"form-paragraph"}><span className={'form-span'}> I agree to the</span>
                                     <span className={'form-highlight'}> Terms & Conditions</span></p>
                             </label>
@@ -312,12 +304,20 @@ const Form = ({data}) => {
 
                         </Col>
                     </Row>
+
+                    <Row className={'justify-content-center'}>
+                        <Col xs={12} lg={6} className={"my-col p-2"}>
+                            <footer>
+                                <p className={"footer-text"}>
+                                    If you have an account, <span className={'form-highlight'}>
+                        <a className={'footer-link'} href={'#Registration'}>Log In</a></span>
+                                </p>
+                            </footer>
+                        </Col>
+                    </Row>
+
                 </Container>
-                <footer>
-                    <p className={"footer-text"}>
-                        If you have an account, <span className={'form-highlight'}><a href={"#"}>Log In</a></span>
-                    </p>
-                </footer>
+
 
 
             </div>

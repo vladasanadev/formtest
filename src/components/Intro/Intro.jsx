@@ -11,11 +11,11 @@ import bg3 from '../../assets/bg-forms/section_1-svg_3.svg'
 const Intro = () => {
     return (
         <div className={"intro-wrapper"}>
-            <div className={'intro-svg-container'}>
+            {/*<div className={'intro-svg-container'}>*/}
                 <img src={bg1} className={'section-one-bg'}/>
                 <img src={bg2} className={'section-two-bg'}/>
                 <img src={bg3} className={'section-three-bg'}/>
-            </div>
+            {/*</div>*/}
             <div style={{backgroundImage: `url(${img})`}} className={'intro-bg-img'}>
                 <Container>
                     <Row className={'justify-content-center'}

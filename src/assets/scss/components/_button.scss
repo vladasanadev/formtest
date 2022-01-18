@@ -7,16 +7,28 @@
   border-radius: rem(5);
   box-sizing: border-box;
   cursor: pointer;
-  border: none;
-
-
+  border: 2px solid $primary-color;
+  transition: 0.3s background-color ease-in;
+  margin: 0;
 }
-.form-btn:hover, .btn-registration:hover{
-  background-color: $primary-color;
-  color: black;
+
+.form-btn:hover{
+  margin: 0;
+  border: 2px solid $primary-color;
+  background-color:transparent;
+  color: $primary-color;
   outline: none;
-
 }
+
+
+.btn-registration:hover{
+  background-color: $primary-color;
+  border: 2px solid $primary-color;
+  color: black;
+  //outline: none;
+  transition: 0.8s all ease-in-out;
+}
+
 .btn-registration
 {
   display: inline-block;
@@ -27,6 +39,7 @@
   border: 2px solid $primary-color;
   background-color: transparent;
   color: $primary-color;
+  transition: 0.3s all ease-in;
 
 }
 @media screen and (max-width: 768px){
