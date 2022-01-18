@@ -1,6 +1,7 @@
 .intro-wrapper{
-  overflow-x: hidden;
-  overflow-y: scroll;
+  //overflow-x: hidden;
+  //overflow-y: scroll;
+  overflow: hidden;
 }
 .form-title {
   font-size: rem(24);
@@ -167,12 +168,15 @@ input[type="checkbox"].checkbox-error{
 }
 
 .footer-text {
-margin-bottom: rem(25);
+  position: absolute;
+  bottom: rem(10);
   font-weight: 300;
   font-size: rem(15);
   line-height: rem(18);
-text-align: center;
   z-index: 1;
+  left: 50%;
+  transform: translate(-50%);
+
 
 }
 
@@ -231,7 +235,12 @@ p{
     bottom: rem(-16);
 
   }
-
+.footer-text{
+  position: initial;
+  padding: rem(60) 0;
+  transform: initial;
+  text-align: center;
+}
 
 
 }
