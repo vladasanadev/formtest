@@ -1,13 +1,33 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 
-const Input = ({ svg,labelFor,placeholder, ...rest}) => {
+const Input = ({svg, labelClass, labelFor, error, hasError, placeholder, ...rest}) => {
+    // const [autoFoc, setAutoFoc] = useState(false);
+    const inptRef = useRef()
     return (
-         <div id={labelFor}
-                  className="input-icons">
+
+        <div id={labelFor}
+             className="input-icons">
             <img src={svg} className="icon"/>
-            <input {...rest} className={'input input-field'}/>
-             <label className={'label'} htmlFor={labelFor}>{placeholder}</label>
+            <input
+                ref={inptRef}
+                {...rest}
+                // onBlur={() => {
+                //     console.log("blurr")
+                //     setAutoFoc(false)
+                // }}
+                // autoFocus={autoFoc}
+                className={'input input-field'}/>
+            <label onClick={() => {
+                // setAutoFoc(true)
+                inptRef.current.focus()
+            }}
+                   className={labelClass}
+                   htmlFor={labelFor}>
+                {placeholder}
+            </label>
+            {hasError && <p className={'form-error'}>{error}</p>}
         </div>
+
 
     );
 };

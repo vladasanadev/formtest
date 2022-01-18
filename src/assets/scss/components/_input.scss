@@ -6,12 +6,12 @@
   //box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   border-radius: rem(5);
   color: #E0E0E0;
-
   font-family: $mainFont;
   font-weight: 300;
 }
 
-.input:focus + .label {
+
+.inputNotEmpty, .input:focus + .label {
   font-size: rem(11);
   top: -1px;
   color: $primary-color;
@@ -31,6 +31,7 @@ input::-webkit-input-placeholder {
 
 .input-icons {
   width: 100%;
+  height: rem(76);
   position: relative;
 }
 
@@ -48,6 +49,4 @@ input::-webkit-input-placeholder {
 .input-field {
   width: 100%;
   padding: rem(16) 0 rem(16) rem(50);
-
-  //text-align: center;
 }

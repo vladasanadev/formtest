@@ -12,20 +12,9 @@ const Intro = () => {
     return (
         <div className={"intro-wrapper"}>
             <div className={'intro-svg-container'}>
-
                 <img src={bg1} className={'section-one-bg'}/>
                 <img src={bg2} className={'section-two-bg'}/>
                 <img src={bg3} className={'section-three-bg'}/>
-                {/*<div className={"section-one-bg"}>*/}
-                {/*    <SectionOne/>*/}
-                {/* */}
-                {/*</div>*/}
-                {/*<div className={"section-two-bg"}>*/}
-                {/*    <SectionTwo/>*/}
-                {/*</div>*/}
-                {/*<div className={"section-three-bg"}>*/}
-                {/*    <SectionThree/>*/}
-                {/*</div>*/}
             </div>
             <div style={{backgroundImage: `url(${img})`}} className={'intro-bg-img'}>
                 <Container>

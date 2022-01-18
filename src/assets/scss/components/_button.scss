@@ -1,4 +1,4 @@
-.btn
+.form-btn
 {
   display: inline-block;
   padding: rem(17) rem(46);
@@ -7,18 +7,30 @@
   border-radius: rem(5);
   box-sizing: border-box;
   cursor: pointer;
+  border: none;
 
 
 }
-.btn:hover, focus{
-  background-color: #FFE302;
+.form-btn:hover, focus, .btn-registration:hover, focus{
+  background-color: $primary-color;
+  color: black;
   outline: none;
   border: none;
 }
-.btn.btn-registration
+.btn-registration
 {
+  display: inline-block;
+  padding: rem(17) rem(46);
+  border-radius: rem(5);
+  box-sizing: border-box;
+  cursor: pointer;
   border: 2px solid $primary-color;
   background-color: transparent;
   color: $primary-color;
 
+}
+@media screen and (max-width: 580px){
+  .form-btn{
+    width: 100%;
+  }
 }
