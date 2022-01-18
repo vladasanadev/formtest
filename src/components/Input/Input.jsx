@@ -3,11 +3,12 @@ import React, {useRef, useState} from 'react';
 const Input = ({svg, labelClass, labelFor, error, hasError, placeholder, ...rest}) => {
     const inptRef = useRef()
     return (
-        <div id={labelFor}
+        <div
              data-scroll
              className="input-icons">
             <img src={svg} className="icon"/>
             <input
+                id={labelFor}
                 ref={inptRef}
                 {...rest}
                 className={'input input-field'}/>

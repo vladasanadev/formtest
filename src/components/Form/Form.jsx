@@ -213,8 +213,7 @@ const Form = ({data}) => {
                                 labelFor={'forPhone'}
                                 placeholder={"Phone"}
                                 svg={phoneSvg}
-                                value={phoneNum}
-
+                                type={"text"}
                             />
                         </Col>
                     </Row>
