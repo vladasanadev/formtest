@@ -56,21 +56,38 @@ const Form = ({data}) => {
             setHasError(false);
         } else {
             setHasError(true);
+            setTimeout(() => {
+                setHasError(false)
+            }, 3000)
         }
     }
     const selectValidation = () => {
-        selectedValue ? setSelectedValueHasError(false) : setSelectedValueHasError(true)
+       if (selectedValue) {
+           setSelectedValueHasError(false)
+       }
+       else {
+           setSelectedValueHasError(true);
+           setTimeout(() => {
+               setSelectedValueHasError(false)
+           }, 3000)
+       }
     }
     const phoneValidation = () => {
         if (phoneNum.length !== 0) {
             setPhHasError(false);
         } else {
             setPhHasError(true);
+            setTimeout(() => {
+                setPhHasError(false)
+            }, 3000)
         }
     }
     const pswValidation = () => {
         if (!validPassword.test(pswValue)) {
             setPswHasError(true)
+            setTimeout(() => {
+                setPswHasError(false)
+            }, 3000)
         } else {
             setPswHasError(false);
         }
@@ -82,12 +99,18 @@ const Form = ({data}) => {
             setConfPswHasError(false)
         } else {
             setConfPswHasError(true);
+            setTimeout(() => {
+                setConfPswHasError(false)
+            }, 3000)
         }
     }
     const emailValidation = () => {
         if (emailValue.includes("@") && emailValue.includes(".")) setEmailHasError(false);
         else {
             setEmailHasError(true);
+            setTimeout(() => {
+                setEmailHasError(false)
+            }, 3000)
         }
     }
     const checkBoxValidation = () => {
