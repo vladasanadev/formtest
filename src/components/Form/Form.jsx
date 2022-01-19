@@ -85,9 +85,6 @@ const Form = ({data}) => {
         }
     }
     const emailValidation = () => {
-        // if (!validEmail.test(emailValue)) {
-        //     setEmailHasError(true)
-        // }
         if (emailValue.includes("@") && emailValue.includes(".")) setEmailHasError(false);
         else {
             setEmailHasError(true);
@@ -106,14 +103,16 @@ const Form = ({data}) => {
         }
     }
 
-    const formValidationHandler = () => {
+    const formValidationHandler = (e) => {
+        console.log("a",e)
+        e.preventDefault()
         nameValidation();
         selectValidation();
         phoneValidation();
-        emailValidation();
         pswValidation();
         confFswValidation();
         checkBoxValidation();
+        emailValidation();
 
     }
 
@@ -131,7 +130,11 @@ const Form = ({data}) => {
                 <img src={bg1} className={'form-one-bg'}/>
                 <img src={bg2} className={'form-two-bg'}/>
                 <img src={bg3} className={'form-three-bg'}/>
+
                 <Container>
+                    <form onSubmit={(event)=>{
+                        // event.preventDefault()
+                        formValidationHandler(event)}}>
                     <Row xs={12} lg={6} className={'justify-content-center'}>
                         <Col xs={12} lg={6}
                              className={"my-col"}>
@@ -178,7 +181,6 @@ const Form = ({data}) => {
                         <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Select
                                 onChange={(e) => {
-                                    console.log("here");
                                     setSelectedValue(e.target.value)
                                     setCountry(e.target.value)
                                     setPhoneNum(data?.countries.find(el => el.name === country).code + " ")
@@ -189,6 +191,7 @@ const Form = ({data}) => {
 
                                     }
                                 }}
+                                // required
                                 error={"Fill in the field"}
                                 hasError={selectedValueHasError}
                                 svg={countrySvg}
@@ -196,7 +199,6 @@ const Form = ({data}) => {
                         </Col>
                         <Col xs={12} lg={3} className={"my-col p-2"}>
                             <Input
-                                // required={required}
                                 value={phoneNum}
                                 hasError={phHasError}
                                 onChange={(e) => {
@@ -208,6 +210,7 @@ const Form = ({data}) => {
                                     }
                                 }
                                 }
+                                // required
                                 labelClass={phoneNum ? "inputNotEmpty label" : "label"}
                                 error={"Fill in the field"}
                                 labelFor={'forPhone'}
@@ -298,7 +301,8 @@ const Form = ({data}) => {
                     <Row className={'justify-content-center'}>
                         <Col xs={12} lg={6} className={"my-col p-2"}>
                             <Button
-                                onClick={formValidationHandler}
+                                type={"submit"}
+                                // onClick={formValidationHandler}
                                 style={"form-btn"} text={"Sign Up"}/>
 
                         </Col>
@@ -314,8 +318,9 @@ const Form = ({data}) => {
                             </footer>
                         </Col>
                     </Row>
-
+                </form>
                 </Container>
+
 
 
 
